@@ -122,3 +122,236 @@ Não requer corpo de requisição.
   "message": "Usuário excluído com sucesso."
 }
 ```
+### POST /schedules (Criação de um novo agendamento)
+
+**Corpo da requisição:**
+```json
+{
+  "user_id": 1,
+  "client_id": 2,
+  "scheduled_date": "2024-03-01T14:00:00Z",
+  "notes": "Reunião inicial com o cliente"
+}
+```
+
+**Corpo da resposta:**
+```json
+{
+  "id": 1,
+  "user_id": 1,
+  "client_id": 2,
+  "scheduled_date": "2024-03-01T14:00:00Z",
+  "notes": "Reunião inicial com o cliente",
+  "created_at": "2024-02-20T12:00:00Z"
+}
+```
+
+### GET /schedules/:id (Obtendo um agendamento específico)
+
+Não requer corpo de requisição.
+
+**Corpo da resposta:**
+```json
+{
+  "id": 1,
+  "user_id": 1,
+  "client_id": 2,
+  "scheduled_date": "2024-03-01T14:00:00Z",
+  "notes": "Reunião inicial com o cliente",
+  "created_at": "2024-02-20T12:00:00Z"
+}
+```
+
+### PUT /schedules/:id (Atualizando um agendamento específico)
+
+**Corpo da requisição:**
+```json
+{
+  "scheduled_date": "2024-03-02T16:00:00Z",
+  "notes": "Reunião alterada para revisão de contrato"
+}
+```
+
+**Corpo da resposta:**
+```json
+{
+  "id": 1,
+  "user_id": 1,
+  "client_id": 2,
+  "scheduled_date": "2024-03-02T16:00:00Z",
+  "notes": "Reunião alterada para revisão de contrato",
+  "updated_at": "2024-02-21T12:00:00Z"
+}
+```
+
+### DELETE /schedules/:id (Excluindo um agendamento específico)
+
+Não requer corpo de requisição.
+
+**Corpo da resposta:**
+```json
+{
+  "message": "Agendamento excluído com sucesso."
+}
+```
+
+### POST /clients (Criação de um novo cliente)
+
+**Corpo da requisição:**
+```json
+{
+  "name": "Empresa X",
+  "email": "contato@empresax.com",
+  "phone": "11999999999"
+}
+```
+
+**Corpo da resposta:**
+```json
+{
+  "id": 1,
+  "name": "Empresa X",
+  "email": "contato@empresax.com",
+  "phone": "11999999999",
+  "created_at": "2024-02-20T12:00:00Z"
+}
+```
+
+### GET /clients/:id (Obtendo um cliente específico)
+
+Não requer corpo de requisição.
+
+**Corpo da resposta:**
+```json
+{
+  "id": 1,
+  "name": "Empresa X",
+  "email": "contato@empresax.com",
+  "phone": "11999999999",
+  "created_at": "2024-02-20T12:00:00Z"
+}
+```
+
+### PUT /clients/:id (Atualizando um cliente específico)
+
+**Corpo da requisição:**
+```json
+{
+  "name": "Empresa X - Nova",
+  "email": "novocontato@empresax.com",
+  "phone": "21999999999"
+}
+```
+
+**Corpo da resposta:**
+```json
+{
+  "id": 1,
+  "name": "Empresa X - Nova",
+  "email": "novocontato@empresax.com",
+  "phone": "21999999999",
+  "updated_at": "2024-02-22T12:00:00Z"
+}
+```
+
+### DELETE /clients/:id (Excluindo um cliente específico)
+
+Não requer corpo de requisição.
+
+**Corpo da resposta:**
+```json
+{
+  "message": "Cliente excluído com sucesso."
+}
+```
+
+### POST /planos (Criação de um novo plano)
+
+**Corpo da requisição:**
+```json
+{
+  "name": "Plano Gold",
+  "description": "Acesso ilimitado"
+}
+```
+{
+  "message": "Cliente excluído com sucesso."
+}
+```
+
+### CRUD para Planos
+
+#### POST /planos (Criação de um novo plano)
+
+**Corpo da requisição:**
+```json
+{
+  "name": "Plano Gold",
+  "description": "Acesso ilimitado a todos os serviços.",
+  "price": 199.99,
+  "duration_months": 12
+}
+```
+
+**Corpo da resposta:**
+```json
+{
+  "id": 1,
+  "name": "Plano Gold",
+  "description": "Acesso ilimitado a todos os serviços.",
+  "price": 199.99,
+  "duration_months": 12,
+  "created_at": "2024-02-24T14:00:00Z"
+}
+```
+
+#### GET /planos/:id (Obtendo um plano específico)
+
+Não requer corpo de requisição.
+
+**Corpo da resposta:**
+```json
+{
+  "id": 1,
+  "name": "Plano Gold",
+  "description": "Acesso ilimitado a todos os serviços.",
+  "price": 199.99,
+  "duration_months": 12,
+  "created_at": "2024-02-24T14:00:00Z"
+}
+```
+
+#### PUT /planos/:id (Atualizando um plano específico)
+
+**Corpo da requisição:**
+```json
+{
+  "name": "Plano Platinum",
+  "description": "Acesso ilimitado a todos os serviços e suporte prioritário.",
+  "price": 299.99,
+  "duration_months": 12
+}
+```
+
+**Corpo da resposta:**
+```json
+{
+  "id": 1,
+  "name": "Plano Platinum",
+  "description": "Acesso ilimitado a todos os serviços e suporte prioritário.",
+  "price": 299.99,
+  "duration_months": 12,
+  "updated_at": "2024-02-25T15:00:00Z"
+}
+```
+
+#### DELETE /planos/:id (Excluindo um plano específico)
+
+Não requer corpo de requisição.
+
+**Corpo da resposta:**
+```json
+{
+  "message": "Plano excluído com sucesso."
+}
+```
