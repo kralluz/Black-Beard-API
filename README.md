@@ -1,6 +1,8 @@
 # Black-Beard
 API para serviços do Barba Negra
 
+[MODELO DER ](https://i.imgur.com/cQMCFhe.png)
+
 ### User
 
 | Método | Endpoint         | Função                        | Permissions   |
