@@ -30,15 +30,15 @@ API para serviços do Barba Negra
 | PATCH    | /services/:id | Atualiza um serviço específico                  | admin/user  |
 | DELETE | /services/:id | Exclui um serviço específico                    | admin       |
 
-### Schedule
+### Appointment
 
 | Método | Endpoint       | Função                             | Permissions |
 | ------ | -------------- | ---------------------------------- | ----------- |
-| POST   | /schedules     | Cria um novo agendamento           | user        |
-| GET    | /schedules     | Lista todos os agendamentos        | admin/user  |
-| GET    | /schedules/:id | Obtém um agendamento específico    | admin/user  |
-| PATCH    | /schedules/:id | Atualiza um agendamento específico | user        |
-| DELETE | /schedules/:id | Exclui um agendamento específico   | admin/user  |
+| POST   | /appointment     | Cria um novo agendamento           | user        |
+| GET    | /appointment     | Lista todos os agendamentos        | admin/user  |
+| GET    | /appointment/:id | Obtém um agendamento específico    | admin/user  |
+| PATCH    | /appointment/:id | Atualiza um agendamento específico | user        |
+| DELETE | /appointment/:id | Exclui um agendamento específico   | admin/user  |
 
 ### Clients
 
@@ -146,7 +146,7 @@ Não é permitido atualização de e-mail e admin.
 
 Não requer corpo de requisição, não possui corpo de resposta.
 
-### POST /schedules (Criação de um novo agendamento)
+### POST /appointment (Criação de um novo agendamento)
 
 **Corpo da requisição:**
 
@@ -154,7 +154,7 @@ Não requer corpo de requisição, não possui corpo de resposta.
 {
     "client_id": 2,
     "service_ids": [1, 4],
-    "scheduled_date": "2024-03-01T14:00:00Z",
+    "appointment_date": "2024-03-01T14:00:00Z",
     "description": "corte americano e pigmentação na barba"
 }
 ```
@@ -182,7 +182,7 @@ Não requer corpo de requisição, não possui corpo de resposta.
             "price": 30.0
         }
     ],
-    "scheduled_date": "2024-03-01T14:00:00Z",
+    "appointment_date": "2024-03-01T14:00:00Z",
     "description": "corte americano e pigmentação na barba",
     "created_at": "2024-02-20T12:00:00Z",
     "updated_at": "2024-02-18T12:34:56Z",
@@ -190,7 +190,7 @@ Não requer corpo de requisição, não possui corpo de resposta.
 }
 ```
 
-### GET /schedules/:id (Obtendo um agendamento específico)
+### GET /appointment/:id (Obtendo um agendamento específico)
 
 Não requer corpo de requisição, não possui corpo de resposta.
 
@@ -219,7 +219,7 @@ Não requer corpo de requisição, não possui corpo de resposta.
             "price": 30.0
         }
     ],
-    "scheduled_date": "2024-03-01T14:00:00Z",
+    "appointment_date": "2024-03-01T14:00:00Z",
     "description": "corte americano e pigmentação na barba",
     "created_at": "2024-02-20T12:00:00Z",
     "updated_at": "2024-02-18T12:34:56Z",
@@ -227,13 +227,13 @@ Não requer corpo de requisição, não possui corpo de resposta.
 }
 ```
 
-### PATCH /schedules/:id (Atualizando um agendamento específico)
+### PATCH /appointment/:id (Atualizando um agendamento específico)
 
 **Corpo da requisição:**
 
 ```json
 {
-    "scheduled_date": "2024-03-02T16:00:00Z",
+    "appointment_date": "2024-03-02T16:00:00Z",
     "description": "Reunião de acompanhamento com o cliente",
     "client_id": 2,
     "service_ids": [2, 3]
@@ -246,7 +246,7 @@ Não requer corpo de requisição, não possui corpo de resposta.
 {
     "id": 1,
     "user_id": 1,
-    "scheduled_date": "2024-03-02T16:00:00Z",
+    "appointment_date": "2024-03-02T16:00:00Z",
     "description": "talvez o cliente atrase 5 minutos por causa do curso",
     "client": {
         "id": 2,
@@ -277,7 +277,7 @@ Não requer corpo de requisição, não possui corpo de resposta.
 }
 ```
 
-### DELETE /schedules/:id (Excluindo um agendamento específico)
+### DELETE /appointment/:id (Excluindo um agendamento específico)
 
 Não requer corpo de requisição, não possui corpo de resposta.
 
