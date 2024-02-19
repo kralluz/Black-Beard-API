@@ -1,7 +1,7 @@
 # Black-Beard
 API para serviços do Barba Negra
 
-![MODELO DER ](https://svgur.com/i/13LM.svg)
+![MODELO DER ](https://svgur.com/i/13N0.svg)
 
 ### User
 
