@@ -401,7 +401,7 @@ Não requer corpo de requisição, não possui corpo de resposta.
 }
 ```
 
-#### GET /planos/:id (Obtendo um plano específico)
+#### GET /plans/:id (Obtendo um plano específico)
 
 Não requer corpo de requisição, não possui corpo de resposta.
 
@@ -410,6 +410,7 @@ Não requer corpo de requisição, não possui corpo de resposta.
 ```json
 {
     "id": 1,
+    "user_id": 1,
     "name": "Plano Mensal",
     "description": "Direito a 4 cortes por mês.",
     "price": 199.99,
@@ -421,7 +422,7 @@ Não requer corpo de requisição, não possui corpo de resposta.
 }
 ```
 
-#### PATCH /planos/:id (Atualizando um plano específico)
+#### PATCH /plans/:id (Atualizando um plano específico)
 
 **Corpo da requisição:**
 
@@ -439,6 +440,7 @@ Não requer corpo de requisição, não possui corpo de resposta.
 ```json
 {
     "id": 1,
+    "user_id": 1,
     "name": "Plano Platinum",
     "description": "Acesso ilimitado a todos os serviços e suporte prioritário.",
     "price": 299.99,
@@ -447,7 +449,7 @@ Não requer corpo de requisição, não possui corpo de resposta.
 }
 ```
 
-#### DELETE /planos/:id (Excluindo um plano específico)
+#### DELETE /plans/:id (Excluindo um plano específico)
 
 Não requer corpo de requisição, não possui corpo de resposta.
 
