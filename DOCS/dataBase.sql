@@ -13,6 +13,7 @@ CREATE TABLE "users" (
 
 CREATE TABLE "plan" (
   "id" SERIAL PRIMARY KEY,
+  "user_id" INT REFERENCES "users"("id"),
   "name" VARCHAR(100) NOT NULL,
   "description" VARCHAR(100) NOT NULL,
   "price" DECIMAL(10,2) NOT NULL,
@@ -27,8 +28,8 @@ CREATE TABLE "clients" (
   "name" VARCHAR(100) NOT NULL,
   "email" VARCHAR(100) UNIQUE,
   "phone" VARCHAR(50) NOT NULL,
-  "user_id" INT REFERENCES "users" ("id"),
-  "plano_id" INT REFERENCES "plan" ("id"),
+  "user_id" INT REFERENCES "users"("id"),
+  "plano_id" INT REFERENCES "plan"("id"),
   "created_at" TIMESTAMP DEFAULT (CURRENT_TIMESTAMP),
   "updated_at" TIMESTAMP DEFAULT null,
   "deleted_at" TIMESTAMP DEFAULT null
@@ -38,8 +39,8 @@ CREATE TABLE "schedules" (
   "id" SERIAL PRIMARY KEY,
   "scheduled_date" TIMESTAMP NOT NULL,
   "description" VARCHAR(100) NOT NULL,
-  "user_id" INT REFERENCES "users" ("id"),
-  "client_id" INT REFERENCES "clients" ("id"),
+  "user_id" INT REFERENCES "users"("id"),
+  "client_id" INT REFERENCES "clients"("id"),
   "created_at" TIMESTAMP DEFAULT (CURRENT_TIMESTAMP),
   "updated_at" TIMESTAMP DEFAULT null,
   "deleted_at" TIMESTAMP DEFAULT null
@@ -47,7 +48,7 @@ CREATE TABLE "schedules" (
 
 CREATE TABLE "services" (
   "id" SERIAL PRIMARY KEY,
-  "user_id" INT REFERENCES "users" ("id"),
+  "user_id" INT REFERENCES "users"("id"),
   "service_name" VARCHAR(100) NOT NULL,
   "description" VARCHAR(100) NOT NULL,
   "price" DECIMAL(10,2) NOT NULL,
