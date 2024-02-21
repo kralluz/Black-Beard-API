@@ -66,9 +66,10 @@ API para serviços do Barba Negra
 
 ```json
 {
-    "username": "novousuario",
+    "name": "novousuario",
     "company_name": "emprezaxyz",
     "email": "usuario@example.com",
+    "tel": "62123456789",
     "password": "senhaSegura123",
     "admin": true
 }
@@ -81,9 +82,10 @@ A chave admin é opcional, valor default será false.
 ```json
 {
     "id": 1,
-    "username": "novousuario",
+    "name": "novousuario",
     "company_name": "emprezaxyz",
     "email": "usuario@example.com",
+    "tel": "62123456789",
     "admin": false,
     "last_access": "2024-02-18T12:34:56Z",
     "created_at": "2024-02-18T12:34:56Z",
@@ -101,9 +103,10 @@ Não requer corpo de requisição, não possui corpo de resposta.
 ```json
 {
     "id": 1,
-    "username": "novousuario",
+    "name": "novousuario",
     "company_name": "emprezaxyz",
     "email": "usuario@example.com",
+    "tel": "62123456789",
     "admin": false,
     "last_access": "2024-02-18T12:34:56Z",
     "created_at": "2024-02-18T12:34:56Z",
@@ -119,7 +122,8 @@ Não requer corpo de requisição, não possui corpo de resposta.
 ```json
 {
     "company_name": "emprezaxyz",
-    "username": "usuarioAtualizado",
+    "name": "usuarioAtualizado",
+    "tel": "62123456789",
     "password": "novaSenhaSegura123"
 }
 ```
@@ -131,9 +135,10 @@ Não é permitido atualização de e-mail e admin.
 ```json
 {
     "id": 1,
-    "username": "novousuario",
+    "name": "novousuario",
     "company_name": "emprezaxyz",
     "email": "usuario@example.com",
+    "tel": "62123456789",
     "admin": false,
     "last_access": "2024-02-18T12:34:56Z",
     "created_at": "2024-02-18T12:34:56Z",
