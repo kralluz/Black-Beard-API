@@ -8,8 +8,10 @@ Este guia fornece instruções detalhadas sobre como clonar o repositório, conf
 
 ### Clonando o Repositório
 
-```
+
 # Passo 1: Clonar o repositório
+
+```
 1. Abra o terminal.
 2. Navegue até o diretório onde você deseja clonar o repositório.
 3. Execute o seguinte comando para clonar o repositório:
