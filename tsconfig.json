@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "plugins": [
+      { "transform": "@swc-node/register" }
+    ],
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
