@@ -22,7 +22,7 @@ Este guia fornece instruções detalhadas sobre como clonar o repositório, conf
 # Passo 2: Instalar as dependências
 1. Navegue até o diretório do projeto clonado:
    ```
-   cd nome_do_projeto
+   cd Black-Beard-API
    ```
 2. Execute o seguinte comando para instalar as dependências do Node.js:
    ```
@@ -53,7 +53,7 @@ Este guia fornece instruções detalhadas sobre como clonar o repositório, conf
 # Passo 5: Iniciar o servidor Nest.js
 1. Navegue até o diretório raiz do projeto, se já não estiver lá:
    ```
-   cd nome_do_projeto
+   cd Black-Beard-API
    ```
 2. Execute o seguinte comando para iniciar o servidor Nest.js:
    ```
