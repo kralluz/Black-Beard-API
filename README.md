@@ -16,7 +16,7 @@ Este guia fornece instruções detalhadas sobre como clonar o repositório, conf
 3. Execute o seguinte comando para clonar o repositório:
 
    ```
-   git clone <URL_DO_SEU_REPOSITORIO>
+   git clone https://github.com/kralluz/Black-Beard-API.git
    ```
 
 # Passo 2: Instalar as dependências
