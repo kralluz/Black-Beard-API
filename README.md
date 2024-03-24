@@ -1,6 +1,69 @@
 # Black-Beard
 
-API para serviços do Barba Negra
+## API para serviços do Barba Negra
+
+### Passo a Passo para Configurar e Executar a API Localmente
+
+Este guia fornece instruções detalhadas sobre como clonar o repositório, configurar o ambiente local e executar a API localmente.
+
+### Clonando o Repositório
+
+
+# Passo 1: Clonar o repositório
+
+1. Abra o terminal.
+2. Navegue até o diretório onde você deseja clonar o repositório.
+3. Execute o seguinte comando para clonar o repositório:
+
+   ```
+   git clone https://github.com/kralluz/Black-Beard-API.git
+   ```
+
+# Passo 2: Instalar as dependências
+1. Navegue até o diretório do projeto clonado:
+   ```
+   cd Black-Beard-API
+   ```
+2. Execute o seguinte comando para instalar as dependências do Node.js:
+   ```
+   npm install
+   ```
+
+# Passo 3: Configurar o Prisma
+1. Certifique-se de ter o Prisma CLI instalado globalmente:
+   ```
+   npm install -g @prisma/cli
+   ```
+2. Navegue até o diretório do Prisma no projeto:
+   ```
+   cd prisma
+   ```
+3. Execute o comando `prisma init` para inicializar o Prisma e configurar a conexão com o banco de dados.
+
+# Passo 4: Executar as migrações do Prisma
+1. Navegue até o diretório raiz do projeto:
+   ```
+   cd ..
+   ```
+2. Execute o seguinte comando para aplicar as migrações do Prisma:
+   ```
+   npx prisma migrate dev
+   ```
+
+# Passo 5: Iniciar o servidor Nest.js
+1. Navegue até o diretório raiz do projeto, se já não estiver lá:
+   ```
+   cd Black-Beard-API
+   ```
+2. Execute o seguinte comando para iniciar o servidor Nest.js:
+   ```
+   npm run start:dev
+   ```
+
+Após seguir esses passos, a API deve estar rodando localmente e pronta para uso. Você pode acessá-la em http://localhost:3000.
+```
+
+
 
 ![MODELO DER ](https://svgur.com/i/13N2.svg)
 
