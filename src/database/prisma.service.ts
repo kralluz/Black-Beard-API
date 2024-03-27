@@ -23,8 +23,8 @@ export class PrismaService {
         return this.prisma[tableName].findUnique({ where: conditions }) as Promise<T>;
     }
 
-    async findMany<T>(tableName: string): Promise<T[]> {
-        return this.prisma[tableName].findMany() as Promise<T[]>;
+    async findMany<T>(tableName: string, conditions: any): Promise<T[]> {
+        return this.prisma[tableName].findMany({ where: conditions }) as Promise<T[]>;
     }
 
     async update<T>(tableName: string, conditions: any, data: any): Promise<T> {

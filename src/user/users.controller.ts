@@ -27,27 +27,36 @@ export class UserController {
 
     @Get()
     async getUsers() {
-        const listUsers = await this.userService.findMany('User');
+        const condition = { delete: false };
+        const listUsers = await this.userService.findMany('User', condition);
         return listUsersResponseSchema.parse(listUsers);
     }
 
     @Get(':id')
     async getUserById(@Param('id', ParseIntPipe) id: number)  {
-        const condition = { id };
+        const condition = { id, delete: false };
+        const user = await this.userService.findOne('User', condition);
+        return userResponseSchema.parse(user);
+    }
+
+    @Get('search/:email')
+    async getUserByEmail(@Param('email') email: string) {
+        const condition = { email, delete: false };
         const user = await this.userService.findOne('User', condition);
         return userResponseSchema.parse(user);
     }
 
     @Patch(':id')
     async updateUser(
-        @Param('id') id: string,
+        @Param('id', ParseIntPipe) id: number,
         @Body() updateUserDto: UpdateUserDto,
     ) {
-        return this.userService.update('User', UpdateUserDto, id);
+        const userUpdated = await this.userService.update('User', { id }, updateUserDto);
+        return userResponseSchema.parse(userUpdated);
     }
 
     @Delete(':id')
     async deleteUser(@Param('id') id: string) {
-        return this.userService.softDelete('User', id);
+        this.userService.softDelete('User', id)
     }
 }
