@@ -48,14 +48,15 @@ export class UserController {
 
     @Patch(':id')
     async updateUser(
-        @Param('id') id: string,
+        @Param('id', ParseIntPipe) id: number,
         @Body() updateUserDto: UpdateUserDto,
     ) {
-        return this.userService.update('User', UpdateUserDto, id);
+        const userUpdated = await this.userService.update('User', { id }, updateUserDto);
+        return userResponseSchema.parse(userUpdated);
     }
 
     @Delete(':id')
     async deleteUser(@Param('id') id: string) {
-        return this.userService.softDelete('User', id);
+        this.userService.softDelete('User', id)
     }
 }
