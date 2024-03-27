@@ -6,10 +6,11 @@ import {
     Delete,
     Body,
     Param,
+    ParseIntPipe,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto, UpdateUserDto } from './user.dto';
-import { createUserResponseSchema } from 'src/schemas/user.schema';
+import { listUsersResponseSchema, userResponseSchema } from 'src/schemas/user.schema';
 
 @Controller('users')
 export class UserController {
@@ -17,18 +18,24 @@ export class UserController {
 
     @Post()
     async createUser(@Body() createUserDto: CreateUserDto) {
-        const createdUser = await this.userService.create('User', createUserDto);
-        return createUserResponseSchema.parse(createdUser);
+        const createdUser = await this.userService.create(
+            'User',
+            createUserDto,
+        );
+        return userResponseSchema.parse(createdUser);
     }
 
     @Get()
     async getUsers() {
-        return this.userService.findMany('User');
+        const listUsers = await this.userService.findMany('User');
+        return listUsersResponseSchema.parse(listUsers);
     }
 
     @Get(':id')
-    async getUserById(@Param('id') id: string) {
-        return this.userService.findOne('User', UpdateUserDto);
+    async getUserById(@Param('id', ParseIntPipe) id: number)  {
+        const condition = { id };
+        const user = await this.userService.findOne('User', condition);
+        return userResponseSchema.parse(user);
     }
 
     @Patch(':id')

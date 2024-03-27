@@ -7,8 +7,9 @@ const userSchema = GenericModelSchema.extend({
     password: z.string().max(300),
     admin: z.boolean().default(false).optional(),
     lastAccess: z.date().default(() => new Date()),
-    plans: z.array(z.string()), // Temporariamente definido como string
     clients: z.array(z.string()), // Temporariamente definido como string
+    plans: z.array(z.string()), // Temporariamente definido como string
+    services: z.array(z.string()), // Temporariamente definido como string
     schedules: z.array(z.string()), // Temporariamente definido como string
 });
 
@@ -20,12 +21,23 @@ const createUserSchema = userSchema.pick({
     admin: true,
 });
 
-const createUserResponseSchema = userSchema.pick({
-    id: true,
-    name: true,
-    companyName: true,
-    email: true,
-    createdAt: true,
+const userResponseSchema = userSchema.pick({
+        id: true,
+        name: true,
+        companyName: true,
+        email: true,
+        createdAt: true,
+        updatedAt: true,
+        lastAccess: true,
 });
 
-export { userSchema, createUserSchema, createUserResponseSchema };
+
+const listUsersResponseSchema = z.array(userResponseSchema);
+
+
+export {
+    userSchema,
+    createUserSchema,
+    userResponseSchema,
+    listUsersResponseSchema,
+};
