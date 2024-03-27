@@ -20,8 +20,8 @@ export class GenericCrudService {
         return this.prismaService.findOne<T>(tableName, conditions);
     }
 
-    async findMany<T>(tableName: string): Promise<T[]> {
-        return this.prismaService.findMany<T>(tableName);
+    async findMany<T>(tableName: string, conditions: any,): Promise<T[]> {
+        return this.prismaService.findMany<T>(tableName, conditions);
     }
 
     async update<T>(tableName: string, conditions: any, data: any): Promise<T> {

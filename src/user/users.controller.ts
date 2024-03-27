@@ -27,13 +27,21 @@ export class UserController {
 
     @Get()
     async getUsers() {
-        const listUsers = await this.userService.findMany('User');
+        const condition = { delete: false };
+        const listUsers = await this.userService.findMany('User', condition);
         return listUsersResponseSchema.parse(listUsers);
     }
 
     @Get(':id')
     async getUserById(@Param('id', ParseIntPipe) id: number)  {
-        const condition = { id };
+        const condition = { id, delete: false };
+        const user = await this.userService.findOne('User', condition);
+        return userResponseSchema.parse(user);
+    }
+
+    @Get('search/:email')
+    async getUserByEmail(@Param('email') email: string) {
+        const condition = { email, delete: false };
         const user = await this.userService.findOne('User', condition);
         return userResponseSchema.parse(user);
     }
