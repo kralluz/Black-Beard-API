@@ -1,3 +1,6 @@
+IF NOT EXISTS CREATE DATABASE 'black_beard_api';
+USE 'black_beard_api';
+
 CREATE TABLE "users" (
   "id" SERIAL PRIMARY KEY,
   "username" VARCHAR(100) NOT NULL,
