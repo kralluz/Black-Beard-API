@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma.service';
+import * as bcrypt from 'bcrypt';
 
 /**
  * GenericCrudService:
@@ -13,6 +14,11 @@ export class GenericCrudService {
     constructor(private readonly prismaService: PrismaService) {}
 
     async create<T>(tableName: string, data: any): Promise<T> {
+        if (data.passwordHash) {
+            const hashedPassword = await bcrypt.hash(data.passwordHash, 10);
+            const newData = { ...data, passwordHash: hashedPassword };
+            return this.prismaService.create<T>(tableName, newData);
+        }
         return this.prismaService.create<T>(tableName, data);
     }
 
@@ -20,7 +26,7 @@ export class GenericCrudService {
         return this.prismaService.findOne<T>(tableName, conditions);
     }
 
-    async findMany<T>(tableName: string, conditions: any,): Promise<T[]> {
+    async findMany<T>(tableName: string, conditions: any): Promise<T[]> {
         return this.prismaService.findMany<T>(tableName, conditions);
     }
 
