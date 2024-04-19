@@ -19,6 +19,13 @@ export class GenericCrudService {
             const newData = { ...data, passwordHash: hashedPassword };
             return this.prismaService.create<T>(tableName, newData);
         }
+
+        if (data.services && Array.isArray(data.services)) {
+            // Formata os IDs dos serviços para o formato esperado pelo Prisma
+            const serviceIds = data.services.map((serviceId) => ({ id: serviceId }));
+            // Substitui o campo `services` pelos IDs formatados
+            data.services = { connect: serviceIds };
+        }
         return this.prismaService.create<T>(tableName, data);
     }
 

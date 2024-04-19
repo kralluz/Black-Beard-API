@@ -24,4 +24,4 @@ export class CreateUserDto {
     readonly passwordHash: string;
 }
 
-export class UpdateUserDto extends PartialType(CreateUserDto) {}
+export class updateDto extends PartialType(CreateUserDto) {}

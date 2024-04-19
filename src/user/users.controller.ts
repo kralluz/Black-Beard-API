@@ -10,7 +10,7 @@ import {
     UseGuards,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { CreateUserDto, UpdateUserDto } from './user.dto';
+import { CreateUserDto, updateDto } from './user.dto';
 import { listUsersResponseSchema, userResponseSchema } from 'src/schemas/user.schema';
 import { UserGuard } from './user.guard';
 
@@ -21,23 +21,23 @@ export class UserController {
 
     @Post()
     @UseGuards(UserGuard) // Correção aqui: UseGuards ao invés de UserGuards
-    async createUser(@Body() createUserDto: CreateUserDto) {
+    async create(@Body() createDto: CreateUserDto) {
         const createdUser = await this.userService.create(
             'User',
-            createUserDto,
+            createDto,
         );
         return userResponseSchema.parse(createdUser);
     }
 
     @Get()
-    async getUsers() {
+    async findAll() {
         const condition = { deleted: false };
         const listUsers = await this.userService.findMany('User', condition);
         return listUsersResponseSchema.parse(listUsers);
     }
 
     @Get(':id')
-    async getUserById(@Param('id', ParseIntPipe) id: number)  {
+    async findOne(@Param('id', ParseIntPipe) id: number)  {
         const condition = { id, deleted: false };
         const user = await this.userService.findOne('User', condition);
         return userResponseSchema.parse(user);
@@ -58,11 +58,11 @@ export class UserController {
     }
 
     @Patch(':id')
-    async updateUser(
+    async update(
         @Param('id', ParseIntPipe) id: number,
-        @Body() updateUserDto: UpdateUserDto,
+        @Body() updateDto: updateDto,
     ) {
-        const userUpdated = await this.userService.update('User', { id }, updateUserDto);
+        const userUpdated = await this.userService.update('User', { id }, updateDto);
         return userResponseSchema.parse(userUpdated);
     }
 
