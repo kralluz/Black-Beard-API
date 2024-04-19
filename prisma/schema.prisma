@@ -7,7 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
   id            Int       @id @default(autoincrement())
   name          String    @db.VarChar(100)
@@ -39,6 +38,7 @@ model Plan {
   deleted          Boolean   @default(false)
   deletedAt        DateTime? @updatedAt
   clients          Client[]
+  schedules        Schedule[] 
 }
 
 model Client {
@@ -65,11 +65,13 @@ model Schedule {
   user          User      @relation(fields: [userId], references: [id])
   clientId      Int
   client        Client    @relation(fields: [clientId], references: [id])
+  services      Service[] @relation("SchedulesServices")
+  planId        Int
+  plan          Plan      @relation(fields: [planId], references: [id])  
   createdAt     DateTime  @default(now())
   updatedAt     DateTime? @updatedAt
   deleted       Boolean   @default(false)
   deletedAt     DateTime? @updatedAt
-  services      Service[] @relation("SchedulesServices")
 }
 
 model Service {

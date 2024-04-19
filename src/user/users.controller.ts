@@ -7,56 +7,68 @@ import {
     Body,
     Param,
     ParseIntPipe,
+    UseGuards,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { CreateUserDto, UpdateUserDto } from './user.dto';
+import { CreateUserDto, updateDto } from './user.dto';
 import { listUsersResponseSchema, userResponseSchema } from 'src/schemas/user.schema';
+import { UserGuard } from './user.guard';
 
 @Controller('users')
 export class UserController {
     constructor(private readonly userService: UserService) {}
 
+
     @Post()
-    async createUser(@Body() createUserDto: CreateUserDto) {
+    @UseGuards(UserGuard) // Correção aqui: UseGuards ao invés de UserGuards
+    async create(@Body() createDto: CreateUserDto) {
         const createdUser = await this.userService.create(
             'User',
-            createUserDto,
+            createDto,
         );
         return userResponseSchema.parse(createdUser);
     }
 
     @Get()
-    async getUsers() {
-        const condition = { delete: false };
+    async findAll() {
+        const condition = { deleted: false };
         const listUsers = await this.userService.findMany('User', condition);
         return listUsersResponseSchema.parse(listUsers);
     }
 
     @Get(':id')
-    async getUserById(@Param('id', ParseIntPipe) id: number)  {
-        const condition = { id, delete: false };
+    async findOne(@Param('id', ParseIntPipe) id: number)  {
+        const condition = { id, deleted: false };
         const user = await this.userService.findOne('User', condition);
         return userResponseSchema.parse(user);
     }
 
+    /* @Get('search/:name')
+    async getUserByName(@Param('name') email: string) {
+        const condition = { email, deleted: false };
+        const user = await this.userService.findOne('User', condition);
+        return userResponseSchema.parse(user);
+    } */
+
     @Get('search/:email')
     async getUserByEmail(@Param('email') email: string) {
-        const condition = { email, delete: false };
+        const condition = { email, deleted: false };
         const user = await this.userService.findOne('User', condition);
         return userResponseSchema.parse(user);
     }
 
     @Patch(':id')
-    async updateUser(
+    async update(
         @Param('id', ParseIntPipe) id: number,
-        @Body() updateUserDto: UpdateUserDto,
+        @Body() updateDto: updateDto,
     ) {
-        const userUpdated = await this.userService.update('User', { id }, updateUserDto);
+        const userUpdated = await this.userService.update('User', { id }, updateDto);
         return userResponseSchema.parse(userUpdated);
     }
 
     @Delete(':id')
     async deleteUser(@Param('id') id: string) {
         this.userService.softDelete('User', id)
+        return { message: 'User deleted' };
     }
 }
