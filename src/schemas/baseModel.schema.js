@@ -1,4 +1,4 @@
-import { z } from 'zod';
+const { z } = require('zod');
 
 const GenericModelSchema = z.object({
     id: z.number(),
@@ -9,4 +9,4 @@ const GenericModelSchema = z.object({
     deleteAt: z.date(),
 });
 
-export default GenericModelSchema;
+module.exports = { GenericModelSchema };

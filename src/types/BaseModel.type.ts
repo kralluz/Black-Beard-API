@@ -1,5 +1,5 @@
 import { ZodType } from 'zod';
-import GenericModelSchema from 'src/schemas/baseModel.schema';
+import GenericModelSchema from '../schemas/baseModel.schema';
 
 type GenericModel = ZodType<typeof GenericModelSchema>;
 

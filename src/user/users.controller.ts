@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto, updateDto } from './user.dto';
-import { listUsersResponseSchema, userResponseSchema } from 'src/schemas/user.schema';
+import { listUsersResponseSchema, userResponseSchema } from './user.schema';
 import { UserGuard } from './user.guard';
 
 @Controller('users')
