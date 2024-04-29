@@ -7,14 +7,17 @@ import { Injectable } from '@nestjs/common';
  * Sua principal responsabilidade é encapsular a lógica de acesso e manipulação de dados usando o Prisma.
  */
 
+interface Datasource {
+    provider: string;
+    url: string;
+}
+
 @Injectable()
 export class PrismaService {
     private prisma: PrismaClient;
+    Service: any;
 
-    constructor() {
-        this.prisma = new PrismaClient();
-    }
-
+    
     async create<T>(tableName: string, data: any): Promise<T> {
         return this.prisma[tableName].create({ data }) as Promise<T>;
     }

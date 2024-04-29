@@ -1,5 +1,14 @@
-import * as z from 'zod';
-import GenericModelSchema from 'src/schemas/baseModel.schema';
+// user.schema.js
+const { z } = require('zod');
+
+const GenericModelSchema = z.object({
+    id: z.number(),
+    name: z.string(),
+    createdAt: z.date(),
+    updatedAt: z.date(),
+    delete: z.boolean(),
+    deleteAt: z.date(),
+});
 
 const userSchema = GenericModelSchema.extend({
     companyName: z.string().max(100),
@@ -22,20 +31,20 @@ const createUserSchema = userSchema.pick({
 });
 
 const userResponseSchema = userSchema.pick({
-        id: true,
-        name: true,
-        companyName: true,
-        email: true,
-        createdAt: true,
-        updatedAt: true,
-        lastAccess: true,
+    id: true,
+    name: true,
+    companyName: true,
+    email: true,
+    createdAt: true,
+    updatedAt: true,
+    lastAccess: true,
 });
 
 
 const listUsersResponseSchema = z.array(userResponseSchema);
 
 
-export {
+module.exports = {
     userSchema,
     createUserSchema,
     userResponseSchema,

@@ -3,7 +3,7 @@ import {
     userSchema,
     createUserSchema,
     userResponseSchema,
-} from 'src/schemas/user.schema';
+} from '../user/user.schema';
 
 type User = ZodType<typeof userSchema>;
 

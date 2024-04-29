@@ -18,4 +18,4 @@ export class CreateBarberServiceDto {
     @IsNotEmpty()
     readonly price: number;
 }
-export class updateBarberServiceDto extends PartialType(CreateBarberServiceDto) {}
+export class UpdateBarberServiceDto extends PartialType(CreateBarberServiceDto) {}

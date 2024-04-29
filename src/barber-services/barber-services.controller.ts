@@ -9,8 +9,7 @@ import {
     ParseIntPipe,
 } from '@nestjs/common';
 import { BarberServicesService } from './barber-services.service';
-import { CreateBarberServiceDto } from './dto/create-barber-service.dto';
-import { UpdateBarberServiceDto } from './dto/update-barber-service.dto';
+import { CreateBarberServiceDto, UpdateBarberServiceDto } from './dto/create-barber-service.dto';
 
 @Controller('services')
 export class BarberServicesController {
@@ -24,7 +23,6 @@ export class BarberServicesController {
             'Service',
             createBarberServiceDto,
         );
-
         return created;
     }
 
@@ -50,7 +48,7 @@ export class BarberServicesController {
 
     @Patch(':id')
     async update(
-        @Param('id', ParseIntPipe) id: string,
+        @Param('id', ParseIntPipe) id: number,
         @Body() updateBarberServiceDto: UpdateBarberServiceDto,
     ) {
         const serviceUpdated = await this.barberServicesService.update(
@@ -62,7 +60,7 @@ export class BarberServicesController {
     }
 
     @Delete(':id')
-    async remove(@Param('id') id: string) {
+    async remove(@Param('id', ParseIntPipe) id: string) {
         this.barberServicesService.softDelete('User', id);
         return { message: 'Service deleted' };
     }
